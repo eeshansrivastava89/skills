@@ -29,9 +29,9 @@ Day-to-day code work skills.
 
 ### Guardrails
 
-Always-on principles that keep the agent honest.
+Install behavioral guardrails across all your coding agents.
 
-- **[claude-code-guardrails](./skills/guardrails/claude-code-guardrails/SKILL.md)** — Working philosophy: research before code, propose don't execute, fix root causes, KISS first, glass-box architecture, verify before shipping.
+- **[agent-guardrails](./skills/guardrails/agent-guardrails/SKILL.md)** — Writes working philosophy and guardrails to `.agents/AGENTS.md`, `.claude/CLAUDE.md`, and `.codex/AGENTS.md` so any agent you use has the same constraints. Merges with existing config — never overwrites.
 
 ## Why These Skills Exist
 

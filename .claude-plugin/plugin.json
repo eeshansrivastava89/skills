@@ -3,7 +3,7 @@
   "skills": [
     "./skills/context-management/context-save",
     "./skills/context-management/context-restore",
-    "./skills/guardrails/claude-code-guardrails",
+    "./skills/guardrails/agent-guardrails",
     "./skills/engineering/commit"
   ]
 }

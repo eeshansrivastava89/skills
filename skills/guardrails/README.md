@@ -1,9 +1,9 @@
 # Guardrails
 
-Always-on behavioral skills that shape how the agent approaches work.
+Skills for installing behavioral guardrails across all your coding agents.
 
-## Model-invoked
+## User-invoked
 
-Active by default — the agent always has access to these principles.
+Reachable only when you type them (`disable-model-invocation: true`).
 
-- **[claude-code-guardrails](./claude-code-guardrails/SKILL.md)** — Global working philosophy: research before code, propose don't execute, fix root causes, KISS first, glass-box architecture, verify before shipping.
+- **[agent-guardrails](./agent-guardrails/SKILL.md)** — Install global guardrails and working philosophy to `.agents/AGENTS.md`, `.claude/CLAUDE.md`, and `.codex/AGENTS.md`. Writes to all three so any agent has the same constraints.
