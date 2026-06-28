@@ -1,0 +1,33 @@
+{
+  "name": "@eeshans/skills",
+  "version": "0.1.0",
+  "description": "Agent skills for context management and guardrails — works with Claude Code, Codex, Pi, and Qwen",
+  "author": "Eeshan Srivastava (https://eeshans.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eeshansrivastava89/skills.git"
+  },
+  "homepage": "https://github.com/eeshansrivastava89/skills#readme",
+  "bugs": {
+    "url": "https://github.com/eeshansrivastava89/skills/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "ai",
+    "agent-skills",
+    "claude-code",
+    "codex",
+    "context-management",
+    "guardrails",
+    "developer-tools",
+    "productivity"
+  ],
+  "files": [
+    "skills/",
+    "README.md",
+    "LICENSE"
+  ]
+}

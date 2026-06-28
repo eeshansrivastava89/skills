@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Validate skill frontmatter
+        run: |
+          set -e
+          for skill in skills/*/SKILL.md skills/*/*/SKILL.md; do
+            [ -f "$skill" ] || continue
+            echo "Checking $skill"
+            if ! head -1 "$skill" | grep -q "^---"; then
+              echo "::error::$skill is missing YAML frontmatter (---)"
+              exit 1
+            fi
+            if ! grep -q "^name:" "$skill"; then
+              echo "::error::$skill is missing 'name:' in frontmatter"
+              exit 1
+            fi
+            if ! grep -q "^description:" "$skill"; then
+              echo "::error::$skill is missing 'description:' in frontmatter"
+              exit 1
+            fi
+          done
+          echo "All skills validated"
+
+      - name: Validate plugin manifest
+        run: |
+          node -e "
+            const plugin = require('./.claude-plugin/plugin.json');
+            const fs = require('fs');
+            for (const skillPath of plugin.skills) {
+              if (!fs.existsSync(skillPath + '/SKILL.md')) {
+                console.error('Missing: ' + skillPath + '/SKILL.md');
+                process.exit(1);
+              }
+            }
+            console.log('All ' + plugin.skills.length + ' skills in plugin.json exist');
+          "
+
+  publish:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - run: npm ci || npm install
+
+      - name: Publish
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

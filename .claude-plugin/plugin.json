@@ -1,0 +1,8 @@
+{
+  "name": "eeshans-skills",
+  "skills": [
+    "./skills/context-management/context-save",
+    "./skills/context-management/context-restore",
+    "./skills/guardrails/claude-code-guardrails"
+  ]
+}
