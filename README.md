@@ -1,8 +1,8 @@
 # Eeshan's Agent Skills
 
-Agent skills I use every day for real engineering — not vibe coding.
+Some minimal agent skills I have been consistenly using for my agentic coding workflows. If you're a uni-tasker like me, then you might find them useful.  
 
-These skills are designed to be small, composable, and work across any coding agent (Claude Code, Codex, Pi, Qwen). They're based on hard-won experience shipping production apps with AI assistants.
+These skills are designed to be small, composable, and work across any coding agent (Claude Code, Codex, Pi, Qwen). My working philosophy is intentionally minimal, uni-tasking, understandable and with a human-in-the-loop perspective, so these few skills and guardrails have been working beautifully if you're the one always wanting to be in control of your work. 
 
 ## Quickstart
 
@@ -10,40 +10,28 @@ These skills are designed to be small, composable, and work across any coding ag
 npx skills@latest add eeshansrivastava89/skills
 ```
 
-Pick the skills you want and which coding agents to install them on. That's it.
+Pick the skills you want and which coding agents to install them on. 
 
 ## What's Included
 
 ### Context Management
 
-Skills for saving and restoring session context — so you never lose your train of thought between sessions, regardless of which agent you're using.
+Skills for saving and restoring session context. Regardless of the model choice (frontier or local), working in small, well-defined sessions produces significantly better output and control in my experience. I use these skills religiously after every constrained working sessions (save context after every ~200K-300K tokens used, clear context, and then restore context in the new session). 
 
 - **[context-save](./skills/context-management/context-save/SKILL.md)** — Captures a compact snapshot of your session state (task, progress, decisions, next actions) and writes it to `.pi/`, `.claude/`, and `.codex/context.md` so any tool can pick up where you left off.
-- **[context-restore](./skills/context-management/context-restore/SKILL.md)** — Reads the saved context file, validates it against current git state, surfaces any discrepancies, and gets you back to work in seconds.
+- **[context-restore](./skills/context-management/context-restore/SKILL.md)** — Reads the saved context file, validates it against current git state, surfaces any discrepancies, and gets you back to work.
 
 ### Engineering
 
-Day-to-day code work skills.
+Day-to-day coding skills.
 
-- **[commit](./skills/engineering/commit/SKILL.md)** — Create a focused git commit with a conventional message. Approval-gated, anti-force-push guardrails built in.
+- **[commit](./skills/engineering/commit/SKILL.md)** — Create a focused git commit with a conventional message. Approval-gated, anti-force-push guardrails built in. 
 
 ### Guardrails
 
 Install behavioral guardrails across all your coding agents.
 
-- **[agent-guardrails](./skills/guardrails/agent-guardrails/SKILL.md)** — Writes working philosophy and guardrails to `.agents/AGENTS.md`, `.claude/CLAUDE.md`, and `.codex/AGENTS.md` so any agent you use has the same constraints. Merges with existing config — never overwrites.
-
-## Why These Skills Exist
-
-### Context loss is the #1 productivity killer
-
-Every time you close a session, you lose context. When you reopen, the agent starts cold — it doesn't know what you were working on, what decisions you made, or where you stopped. You spend the first 15 minutes re-explaining everything.
-
-**context-save / context-restore** fix this. One command before you close, one command when you reopen. The agent picks up exactly where you left off — across any tool.
-
-### Agents need guardrails, not autonomy
-
-The default agent behavior is to jump straight to code. These guardrails enforce a healthier loop: research first, propose a plan, get approval, then execute in small chunks with verification at every step.
+- **[agent-guardrails](./skills/guardrails/agent-guardrails/SKILL.md)** — Writes working philosophy and guardrails to `.agents/AGENTS.md`, `.claude/CLAUDE.md`, and `.codex/AGENTS.md` so any agent you use has the same constraints. Again, this is my intentionally minimal, constrained and human-in-the-loop working philosophy that ensures high quality output from your agentic coding sessions. 
 
 ## Philosophy
 
